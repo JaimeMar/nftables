@@ -39,7 +39,7 @@ SCRIPT
 	$scriptNftables = <<-'SCRIPT'
        		apt-get update
 		apt-get upgrade -y
-		apt-get install nftables
+		apt-get install nftables -y
 	
   	SCRIPT
 	
@@ -74,7 +74,7 @@ SCRIPT
 	$scriptNftables = <<-'SCRIPT'
        		apt-get update
 		apt-get upgrade -y
-		apt-get install nftables
+		apt-get install nftables -y
 	
   	SCRIPT
 	lan.vm.provision "lan_all", type: "shell", run: "always" do |lgw|
@@ -99,7 +99,7 @@ SCRIPT
 	$scriptNftables = <<-'SCRIPT'
        		apt-get update
 		apt-get upgrade -y
-		apt-get install nftables
+		apt-get install nftables -y
 	
   	SCRIPT
         dmz.vm.provision "lan_all", type: "shell", run: "always" do |dgw|
