@@ -36,8 +36,16 @@ SCRIPT
 	echo "net.ipv4.ip_forward=1" >> /etc/sysctl.conf
 	iptables -t nat -A POSTROUTING -o enp0s8 -j MASQUERADE
 	SCRIPT
+	$scriptNftables = <<-'SCRIPT'
+       		apt-get update
+		apt-get upgrade -y
+		apt-get install nftables
+	
+  	SCRIPT
+	
 	fachada.vm.provision "fachada_once", type: "shell" do |fo|
 	  fo.inline = $scriptFachada
+	  fo.inline = $scriptNftables
 	end
 
 	fachada.vm.provision "conectividad", type: "shell",
@@ -61,9 +69,17 @@ SCRIPT
        		ip r add default via 192.168.33.1
 		ping -c 2 192.168.33.1
 		ping -c 2 www.google.com
+
+	SCRIPT
+	$scriptNftables = <<-'SCRIPT'
+       		apt-get update
+		apt-get upgrade -y
+		apt-get install nftables
+	
   	SCRIPT
 	lan.vm.provision "lan_all", type: "shell", run: "always" do |lgw|
           lgw.inline = $scriptGateway
+	  lgw.inline = $scriptNftables
         end
 	
 	lan.vm.network "private_network", ip: "192.168.33.2",
@@ -80,8 +96,15 @@ SCRIPT
 		ping -c 2 192.168.111.1
 		ping -c 2 google.com
         SCRIPT
+	$scriptNftables = <<-'SCRIPT'
+       		apt-get update
+		apt-get upgrade -y
+		apt-get install nftables
+	
+  	SCRIPT
         dmz.vm.provision "lan_all", type: "shell", run: "always" do |dgw|
           dgw.inline = $scriptGateway
+	  dgw.inline = $scriptNftables
         end
 
 	dmz.vm.network "private_network", ip: "192.168.111.2",
