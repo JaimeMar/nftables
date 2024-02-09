@@ -38,7 +38,6 @@ SCRIPT
 	SCRIPT
 	$scriptNftables = <<-'SCRIPT'
        		apt-get update
-		apt-get upgrade -y
 		apt-get install nftables -y
 	
   	SCRIPT
@@ -73,7 +72,6 @@ SCRIPT
 	SCRIPT
 	$scriptNftables = <<-'SCRIPT'
        		apt-get update
-		apt-get upgrade -y
 		apt-get install nftables -y
 	
   	SCRIPT
@@ -98,7 +96,6 @@ SCRIPT
         SCRIPT
 	$scriptNftables = <<-'SCRIPT'
        		apt-get update
-		apt-get upgrade -y
 		apt-get install nftables -y
 	
   	SCRIPT
