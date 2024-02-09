@@ -15,7 +15,7 @@ sudo nft add rule ip filter output oifname "enp0s3" ip protocol tcp tcp sport 22
 sudo nft add rule ip filter output oifname "enp0s8" ip protocol icmp counter accept
 sudo nft add rule ip filter output oifname "enp0s9" ip protocol icmp ip daddr 192.168.33.0/24 counter accept
 sudo nft add rule ip filter output oifname "enp0s10" ip protocol icmp ip daddr 192.168.111.0/24 counter accept
-sudo nft add rule ip filter output oifname "enp0s8" ip protocol udp udp dport 22 counter accept
+sudo nft add rule ip filter output oifname "enp0s8" ip protocol udp udp dport 53 counter accept
 
 #FORWARD
 sudo nft add chain ip filter forward { type filter hook forward priority 0 \; }
