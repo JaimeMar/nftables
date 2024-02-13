@@ -1,3 +1,4 @@
+#!/bin/bash
 rojo="\e[31m"
 verde="\e[32m"
 amarillo="\e[33m"
